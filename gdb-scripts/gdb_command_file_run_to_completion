@@ -1,0 +1,12 @@
+# load symbols
+file build/debug/feabhas-stm32f407.elf
+# QEMU: listen on default gdb port 1234
+target remote :1234
+# disable the need for answering yes
+set confirm off
+# delete all breakpoints
+delete
+# continue - run to end of application
+c
+# quit on application terminate
+q

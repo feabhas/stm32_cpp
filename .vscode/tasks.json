@@ -1,0 +1,101 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "scons",
+            "args": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build (QEMU)",
+            "type": "shell",
+            "command": "scons",
+            "args": [
+                "--qemu"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "scons",
+            "args": [
+                "--rtos",
+                "-c"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run QEMU Leds",
+            "dependsOn": "Build (QEMU)",
+            "type": "shell",
+            "command": "${workspaceFolder}/qemu-scripts/run_leds.sh",
+            "args": [
+                "${workspaceFolder}/build/debug/Application.elf"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run QEMU WMS",
+            "dependsOn": "Build (QEMU)",
+            "type": "shell",
+            "command": "${workspaceFolder}/qemu-scripts/run_qemu.sh",
+            "args": [
+                "feabhas-wms",
+                "${workspaceFolder}/build/debug/Application.elf"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Debug (GDB) QEMU Leds",
+            "dependsOn": "Build (QEMU)",
+            "type": "shell",
+            "command": "${workspaceFolder}/qemu-scripts/run_leds_gdb.sh",
+            "args": [
+                "${workspaceFolder}/build/debug/Application.elf"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Debug (GDB) QEMU WMS",
+            "dependsOn": "Build (QEMU)",
+            "type": "shell",
+            "command": "${workspaceFolder}/qemu-scripts/run_gdb.sh",
+            "args": [
+                "feabhas-wms",
+                "${workspaceFolder}/build/debug/Application.elf"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+    ]
+}

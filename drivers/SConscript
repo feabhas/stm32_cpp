@@ -1,0 +1,6 @@
+Import('*')
+
+sconscript_cwd = Dir('.').srcnode().abspath
+includes += [sconscript_cwd]
+sources += Glob('*.c')
+sources += Glob('*.cpp')

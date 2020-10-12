@@ -1,0 +1,31 @@
+set prompt (arm-gdb)
+# Segger: listen on port
+target remote localhost:2331
+# Segger: reset device
+monitor reset
+monitor sleep 300
+#
+# CPU core initialization (to be done by user)
+#
+# Set auto JTAG speed
+monitor speed auto
+# Setup GDB FOR FASTER DOWNLOADS
+set remote memory-write-packet-size 1024
+set remote memory-write-packet-size fixed
+# Segger: specify flash of device
+monitor device = STM32F407VG 
+# Segger: enable flash download
+monitor flash download = 1
+# Segger: enable flash breakpoints
+monitor flash breakpoints = 1
+# enable semihosting
+monitor semihosting enable
+monitor semihosting ioclient 2
+# load symbols
+file ./build/debug/feabhas-stm32f407.elf
+# load/flash application file
+load ./build/debug/feabhas-stm32f407.elf
+break main
+#run
+continue
+list main,

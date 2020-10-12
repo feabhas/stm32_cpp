@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "DEBUG",
+                "USE_FULL_ASSERT",
+                "STM32F407xx",
+                "TRACE",
+                "OS_USE_TRACE_SEMIHOSTING_DEBUG",
+                "OS_USE_TRACE_SEMIHOSTING_STDOUT",
+                "OS_USE_SEMIHOSTING",
+                "TRACE_ENABLED"
+            ],
+            "compilerPath": "${env:HOME}/gcc-arm-none-eabi-9-2020-q2-update/bin/",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}

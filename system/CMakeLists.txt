@@ -1,0 +1,25 @@
+set(SYSTEM_INCLUDE_DIRS
+    ${CMAKE_CURRENT_SOURCE_DIR}/
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/arm/
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/cmsis/
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/cortexm
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/diag/
+    PARENT_SCOPE)
+
+set(SYSTEM_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/cmsis/system_stm32f4xx.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/cmsis/vectors_stm32f407xx.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/cortexm/_initialize_hardware.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/cortexm/_reset_hardware.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/cortexm/exception_handlers.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/diag/Trace.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/diag/trace_impl.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/newlib/__dso_handle.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/newlib/_cxx.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/newlib/_exit.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/newlib/_sbrk.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/newlib/_startup.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/newlib/_syscalls.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/newlib/assert.c
+    PARENT_SCOPE)

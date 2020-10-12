@@ -1,0 +1,16 @@
+Import('env')
+Import('sources')
+Import('proj_name')
+Import('vdir')
+program_sources = Glob('*.cpp')
+
+# build everything
+elf = env.Program(
+    target = proj_name,
+    source = program_sources + sources,
+)
+
+hex=env.Command(proj_name+".hex",elf,"arm-none-eabi-objcopy -O ihex "+vdir+proj_name+".elf "+vdir+proj_name+".hex")
+bin=env.Command(proj_name+".bin",elf,"arm-none-eabi-objcopy -O binary "+vdir+proj_name+".elf "+vdir+proj_name+".bin")
+lst=env.Command(proj_name+".lst",elf,"arm-none-eabi-objdump -h -S "+vdir+proj_name+".elf > "+vdir+proj_name+".lst")
+size=env.Command(proj_name+".size",elf,"arm-none-eabi-size --format=berkeley "+vdir+proj_name+".elf | tee "+vdir+proj_name+".size")
